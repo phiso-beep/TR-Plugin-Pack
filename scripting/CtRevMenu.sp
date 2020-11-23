@@ -114,7 +114,7 @@ Menu ReviveMenu()
 	Menu menu = new Menu(RevHandle);
 	menu.SetTitle("★Revlenecek Oyuncuyu Seçiniz★\n          ★ Kalan hak: %d ★", revhak);
 	menu.AddItem("reload", "! Sayfayı Yenile !\n ");
-	for (int i = 1; i <= MaxClients; i++)if (IsClientInGame(i)/*&& !IsFakeClient(i)*/ && GetClientTeam(i) == CS_TEAM_CT && !IsPlayerAlive(i))
+	for (int i = 1; i <= MaxClients; i++)if (IsClientInGame(i) && !IsFakeClient(i) && GetClientTeam(i) == CS_TEAM_CT && !IsPlayerAlive(i))
 	{
 		char name[MAX_NAME_LENGTH], id[8];
 		GetClientName(i, name, sizeof(name));
