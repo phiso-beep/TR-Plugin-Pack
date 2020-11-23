@@ -12,7 +12,7 @@ public Plugin myinfo =
 	name = "[JB] Ct Rev Menu", 
 	author = "quantum.", 
 	description = "Ölen ct korumalarının revlenmesi için komutçuya bir menü gönderir", 
-	version = "1.0.0", 
+	version = "1.1", 
 	url = "https://forum.pluginmerkezi.com"
 };
 
@@ -39,6 +39,23 @@ public void OnPluginStart()
 	revflag = CreateConVar("sm_ctrev_flag", "b", "CT Rev menüsüne erişim ve hakları sıfırlamak için gereken yetki bayrağı.(Komutçunun otomatik olarak erişimi olur)");
 	
 	AutoExecConfig(true, "CtRevMenu", "PluginMerkezi");
+}
+
+public void OnMapStart()
+{
+	char map[32];
+	GetCurrentMap(map, sizeof(map));
+	if (strncmp(map, "workshop/", 9, false) == 0)
+	{
+		if (StrContains(map, "/jb_", false) == -1 && StrContains(map, "/jail_", false) == -1 && StrContains(map, "/ba_jail", false) == -1)
+		{
+			SetFailState("[PM] CtRevMenu sadece Jailbreak modunda çalışır.");
+		}
+	}
+	else if (strncmp(map, "jb_", 3, false) != 0 && strncmp(map, "jail_", 5, false) != 0 && strncmp(map, "ba_jail", 3, false) != 0)
+	{
+		SetFailState("[PM] CtRevMenu sadece Jailbreak modunda çalışır.");
+	}
 }
 
 public void OnClientCookiesCached(int client)
