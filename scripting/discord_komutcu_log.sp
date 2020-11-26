@@ -25,7 +25,7 @@ public void OnPluginStart()
 	AddCommandListener(Control_ExitWarden, "sm_uc");
 	AddCommandListener(Control_ExitWarden, "sm_uncommander");
 	
-	webhook = CreateConVar("sm_dc_bildirim_webhook", "https://discord.com/api/webhooks/767689878854041640/LjPFjHhW6xLa8s08-tLf3VDTSpvV0CVKhTXeuVe8EclYPaLi1FIZZTTwQZqfPk2ymDUx", "Discord Kanal Entregrasyon Webhook");
+	webhook = CreateConVar("sm_dc_bildirim_webhook", "WEBHOOK GIRINIZ", "Discord Kanal Entregrasyon Webhook");
 	AutoExecConfig(true, "Discord-Komutcu", "ByDexter");
 }
 
@@ -37,7 +37,7 @@ public void OnMapEnd()
 	GetClientName(Komutcu, name, sizeof(name));
 	GetClientAuthId(Komutcu, AuthId_Steam2, authid, sizeof(authid));
 	Format(sIP, sizeof(sIP), "%d.%d.%d.%d", pic[0], pic[1], pic[2], pic[3]);
-	Format(discordbildirim, sizeof(discordbildirim), "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n> :sob:  Komutçu Komuttan Ayrıldı :sob:\n> \n> :man_police_officer: `%s` - `%s` : ( %d Dakika komut verdi )\nTıkla Bağlan : steam://connect/%s", name, authid, sure, sIP);
+	Format(discordbildirim, sizeof(discordbildirim), "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n> :sob:  Komutçu Komuttan Ayrıldı :sob:\n> \n> :man_police_officer: `%s` - `%s` : ( %d Dakika komut verdi )\n> \n> Tıkla Bağlan : steam://connect/%s", name, authid, sure, sIP);
 	SendToDiscord(discordbildirim);
 	Komutcu = -1;
 	if (sure_timer != null)
@@ -57,7 +57,7 @@ public Action Control_ExitWarden(int client, const char[] command, int argc)
 		GetClientName(Komutcu, name, sizeof(name));
 		GetClientAuthId(Komutcu, AuthId_Steam2, authid, sizeof(authid));
 		Format(sIP, sizeof(sIP), "%d.%d.%d.%d", pic[0], pic[1], pic[2], pic[3]);
-		Format(discordbildirim, sizeof(discordbildirim), "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n> :sob:  Komutçu Komuttan Ayrıldı :sob:\n> \n> :man_police_officer: `%s` - `%s` : ( %d Dakika komut verdi )\nTıkla Bağlan : steam://connect/%s", name, authid, sure, sIP);
+		Format(discordbildirim, sizeof(discordbildirim), "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n> :sob:  Komutçu Komuttan Ayrıldı :sob:\n> \n> :man_police_officer: `%s` - `%s` : ( %d Dakika komut verdi )\n> \n> Tıkla Bağlan : steam://connect/%s", name, authid, sure, sIP);
 		SendToDiscord(discordbildirim);
 		Komutcu = -1;
 		if (sure_timer != null)
@@ -77,7 +77,7 @@ public void warden_OnWardenCreated(int client)
 	GetClientName(Komutcu, name, sizeof(name));
 	GetClientAuthId(Komutcu, AuthId_Steam2, authid, sizeof(authid));
 	Format(sIP, sizeof(sIP), "%d.%d.%d.%d", pic[0], pic[1], pic[2], pic[3]);
-	Format(discordbildirim, sizeof(discordbildirim), "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n> :star:  Yeni Birisi Komuta Geçti :star:\n> \n> :man_police_officer: `%s` - `%s`\nTıkla Bağlan : steam://connect/%s", name, authid, sIP);
+	Format(discordbildirim, sizeof(discordbildirim), "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n> :star:  Yeni Birisi Komuta Geçti :star:\n> \n> :man_police_officer: `%s` - `%s`\n> \n> Tıkla Bağlan : steam://connect/%s", name, authid, sIP);
 	SendToDiscord(discordbildirim);
 	if (sure != 0)
 		sure = 0;
@@ -94,7 +94,7 @@ public void warden_OnWardenRemoved(int client)
 	GetClientName(Komutcu, name, sizeof(name));
 	GetClientAuthId(Komutcu, AuthId_Steam2, authid, sizeof(authid));
 	Format(sIP, sizeof(sIP), "%d.%d.%d.%d", pic[0], pic[1], pic[2], pic[3]);
-	Format(discordbildirim, sizeof(discordbildirim), "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n> :sob:  Komutçu Komuttan Ayrıldı :sob:\n> \n> :man_police_officer: `%s` - `%s` : ( %d Dakika komut verdi )\nTıkla Bağlan : steam://connect/%s", name, authid, sure, sIP);
+	Format(discordbildirim, sizeof(discordbildirim), "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n> :sob:  Komutçu Komuttan Ayrıldı :sob:\n> \n> :man_police_officer: `%s` - `%s` : ( %d Dakika komut verdi )\n> \n> Tıkla Bağlan : steam://connect/%s", name, authid, sure, sIP);
 	SendToDiscord(discordbildirim);
 	Komutcu = -1;
 	if (sure_timer != null)
