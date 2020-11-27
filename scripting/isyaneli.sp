@@ -6,11 +6,11 @@
 #undef REQUIRE_PLUGIN
 #include <hgr>
 
-int g_roundStartedTime = -1, GeriSay = 0; Handle g_gerisaytimer = null, g_gelismistimer = null; bool iseliaktif = false, IPAktif = false; ConVar g_MaxTime = null, g_Hangisilah = null, g_Silahversinmi = null, g_Hookengel = null, g_MinTime = null, g_Canver = null, g_Revle = null, g_Yetkiliflag = null, g_Hucre = null, g_CTizleme = null, g_Kapi = null, g_Infotime = null, g_Slayt = null, g_Otorev = null, g_Otorevtime = null, g_Canverc = null;
+int g_roundStartedTime = -1, GeriSay = 0; Handle g_gerisaytimer = null, g_gelismistimer = null; bool iseliaktif = false; ConVar g_MaxTime = null, g_Hangisilah = null, g_Silahversinmi = null, g_Hookengel = null, g_MinTime = null, g_Canver = null, g_Revle = null, g_Yetkiliflag = null, g_Hucre = null, g_CTizleme = null, g_Kapi = null, g_Infotime = null, g_Slayt = null, g_Otorev = null, g_Otorevtime = null, g_Canverc = null;
 #pragma semicolon 1
 #pragma newdecls required
 
-public Plugin myinfo =  { name = "Gelişmiş İsyan Eli", author = "ByDexter", description = "", version = "1.5", url = "https://steamcommunity.com/id/ByDexterTR - ByDexter#5494" };
+public Plugin myinfo =  { name = "Gelişmiş İsyan Eli", author = "ByDexter", description = "", version = "1.5b", url = "https://steamcommunity.com/id/ByDexterTR - ByDexter#5494" };
 
 public void OnPluginStart()
 {
@@ -49,8 +49,6 @@ public void OnPluginStart()
 	g_Yetkiliflag = CreateConVar("sm_iseli_yetki", "o", "İsyan eli komutçu harici verebilecek kişilerin yetkisi");
 	AutoExecConfig(true, "Gelismis-iseli", "ByDexter");
 }
-
-public void OnMapStart() { char serverip[64]; GetConVarString(FindConVar("ip"), serverip, 64); if (StrEqual(serverip, "185.193.164.164", true))IPAktif = false; else IPAktif = true; }
 
 public Action Event_RoundStartEnd(Handle event, const char[] name, bool dontBroadcast)
 {
@@ -314,5 +312,4 @@ stock int GetRandomPlayer(int team = -1, bool OnlyAlive = false)
 public Action HGR_OnClientHook(int client) { if (iseliaktif && g_Hookengel.BoolValue)return Plugin_Handled; return Plugin_Continue; }
 public Action HGR_OnClientGrab(int client) { if (iseliaktif && g_Hookengel.BoolValue)return Plugin_Handled; return Plugin_Continue; }
 public Action HGR_OnClientRope(int client) { if (iseliaktif && g_Hookengel.BoolValue)return Plugin_Handled; return Plugin_Continue; }
-public void OnClientPutInServer(int client) { if (IPAktif)KickClient(client, "Bu sunucuda ByDexter#5494 izinsiz Isyan eli eklentisi kullanılıyor"); }
 void SetCvar(char cvarName[64], int value) { Handle IntCvar = FindConVar(cvarName); if (IntCvar == null)return; int flags = GetConVarFlags(IntCvar); flags &= ~FCVAR_NOTIFY; SetConVarFlags(IntCvar, flags); SetConVarInt(IntCvar, value); flags |= FCVAR_NOTIFY; SetConVarFlags(IntCvar, flags); } 
