@@ -29,7 +29,7 @@ public void OnPluginStart()
 	g_Canver = CreateConVar("sm_iseli_can_t", "100", "T Kaç canla başlasın", FCVAR_NOTIFY, true, 0.0);
 	g_Canverc = CreateConVar("sm_iseli_can_ct", "400", "CT Kaç canla başlasın", FCVAR_NOTIFY, true, 0.0);
 	
-	g_Otorevtime = CreateConVar("sm_iseli_otorev", "3490", "T Kaçta oto revi kapatılsın ( Saniye bazlı )", FCVAR_NOTIFY, true, 0.0);
+	g_Otorevtime = CreateConVar("sm_iseli_otorev_sure", "3490", "T Kaçta oto revi kapatılsın ( Saniye bazlı )", FCVAR_NOTIFY, true, 0.0);
 	g_Otorev = CreateConVar("sm_iseli_otorev", "1", "T otomatik respawnı açılsın mı?", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	
 	g_Infotime = CreateConVar("sm_iseli_ct_info", "3490", "CT Kaçta info versin ( Saniye bazlı )", FCVAR_NOTIFY, true, 0.0);
