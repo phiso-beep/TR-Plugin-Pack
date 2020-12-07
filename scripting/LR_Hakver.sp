@@ -15,7 +15,15 @@ public Plugin myinfo =
 	version = "1.0", 
 	url = "https://steamcommunity.com/id/ByDexterTR - ByDexter#5494"
 };
-
+public void OnMapStart()
+{
+	char mapismi[512];
+	GetCurrentMap(mapismi, sizeof(mapismi));
+	if (StrContains(mapismi, "jb_", false) != 0 && StrContains(mapismi, "jail_", false) != 0 && StrContains(mapismi, "ba_jail", false) != 0)
+	{
+		SetFailState("[LR HAK SAL] Bu eklenti sadece ve sadece jailbreak modunda calismaktadir.");
+	}
+}	
 public void OnPluginStart()
 {
 	LoadTranslations("common.phrases");
